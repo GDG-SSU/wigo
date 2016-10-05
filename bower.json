@@ -1,0 +1,21 @@
+{
+  "name": "wigo",
+  "authors": [
+    "GDG SSU wigo Team"
+  ],
+  "description": "Wiki Engine written in Go",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1"
+  }
+}
