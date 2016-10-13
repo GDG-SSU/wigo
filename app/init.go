@@ -1,6 +1,14 @@
 package app
 
-import "github.com/revel/revel"
+import (
+	"fmt"
+
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/jinzhu/gorm"
+	"github.com/revel/revel"
+)
+
+var DB *gorm.DB
 
 func init() {
 	// Filters is the default set of global filters.
@@ -21,7 +29,7 @@ func init() {
 
 	// register startup functions with OnAppStart
 	// ( order dependent )
-	// revel.OnAppStart(InitDB)
+	revel.OnAppStart(InitDB)
 	// revel.OnAppStart(FillCache)
 }
 
@@ -35,4 +43,28 @@ var HeaderFilter = func(c *revel.Controller, fc []revel.Filter) {
 	c.Response.Out.Header().Add("X-Content-Type-Options", "nosniff")
 
 	fc[0](c, fc[1:]) // Execute the next filter stage.
+}
+
+/**
+ * InitDB - Connnect and initialize the database
+ * @type {[type]}
+ */
+var InitDB = func() {
+	un, _ := revel.Config.String("db.user.name")
+	up, _ := revel.Config.String("db.user.password")
+	dbn, _ := revel.Config.String("db.database")
+
+	fmt.Println(dbn)
+
+	dbm, err := gorm.Open("mysql", fmt.Sprintf("%s:%s@/%s?charset=utf8&parseTime=True", un, up, dbn))
+	if err != nil {
+		panic("Unable to connect to the database")
+	}
+	DB = dbm
+	dbm.DB().Ping()
+	dbm.DB().SetMaxIdleConns(10)
+	dbm.DB().SetMaxOpenConns(100)
+	dbm.SingularTable(true)
+
+	// Create table
 }
