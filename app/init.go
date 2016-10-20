@@ -3,6 +3,7 @@ package app
 import (
 	"fmt"
 
+	"github.com/GDG-SSU/wigo/app/models"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"github.com/revel/revel"
@@ -64,7 +65,9 @@ var InitDB = func() {
 	dbm.DB().Ping()
 	dbm.DB().SetMaxIdleConns(10)
 	dbm.DB().SetMaxOpenConns(100)
-	dbm.SingularTable(true)
 
 	// Create table
+	if !dbm.HasTable(&models.Document{}) {
+		dbm.CreateTable(&models.Document{})
+	}
 }
