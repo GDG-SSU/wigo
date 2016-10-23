@@ -3,9 +3,9 @@ package app
 import (
     "fmt"
 
-    "github.com/GDG-SSU/wigo/app/models"
     _ "github.com/go-sql-driver/mysql"
     "github.com/jinzhu/gorm"
+    "github.com/GDG-SSU/wigo/app/models"
     "github.com/revel/revel"
 )
 
