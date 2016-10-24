@@ -7,5 +7,9 @@ type Document struct {
 }
 
 func (c Document) Write() revel.Result {
+    var title string
+    var content string
+    c.Params.Bind(&title, "title")
+    c.Params.Bind(&content, "content")
     return c.Render()
 }
