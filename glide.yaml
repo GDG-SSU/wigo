@@ -1,0 +1,10 @@
+package: main
+import:
+- package: github.com/go-sql-driver/mysql
+  version: ~1.2.0
+- package: github.com/jinzhu/gorm
+  version: ~1.0.0
+- package: github.com/revel/cmd
+  version: ^0.13.1
+  subpackages:
+  - revel

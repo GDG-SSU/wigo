@@ -1,0 +1,50 @@
+hash: 63e43e891990b2f79c2ba8b528e8b64638fa66a28058c01d60f93269a9d893b9
+updated: 2016-10-25T21:38:21.030186751+09:00
+imports:
+- name: github.com/agtorre/gocolorize
+  version: f42b554bf7f006936130c9bb4f971afd2d87f671
+- name: github.com/go-sql-driver/mysql
+  version: a732e14c62dde3285440047bba97581bc472ae18
+- name: github.com/jinzhu/gorm
+  version: 5174cc5c242a728b435ea2be8a2f7f998e15429b
+- name: github.com/jinzhu/inflection
+  version: 74387dc39a75e970e7a3ae6a3386b5bd2e5c5cff
+- name: github.com/klauspost/compress
+  version: d79e91e68b50915127b49fbb88f450e2ca63c18a
+  subpackages:
+  - flate
+  - gzip
+  - zlib
+- name: github.com/klauspost/cpuid
+  version: 09cded8978dc9e80714c4d85b0322337b0a1e5e0
+- name: github.com/klauspost/crc32
+  version: cb6bfca970f6908083f26f39a79009d608efd5cd
+- name: github.com/revel/cmd
+  version: 4b9e74e1eaf41d1041de57ce613aa03aa17232e2
+  subpackages:
+  - revel
+- name: github.com/revel/config
+  version: 75f5ee659b5338d1ce823536fe9b9e50b4de01b4
+- name: github.com/revel/modules
+  version: c3a4c48d9f199a6f1a77a198d38f6aee3b48b4d9
+  subpackages:
+  - static/app/controllers
+  - testrunner/app
+  - testrunner/app/controllers
+- name: github.com/revel/revel
+  version: 8d01a054f6bca9430b3e497fe7b4f20ec8f054ce
+  subpackages:
+  - testing
+- name: github.com/robfig/pathtree
+  version: 41257a1839e945fce74afd070e02bab2ea2c776a
+- name: golang.org/x/net
+  version: daba796358cd2742b75aae05761f1b898c9f6a5c
+  subpackages:
+  - websocket
+- name: golang.org/x/sys
+  version: 002cbb5f952456d0c50e0d2aff17ea5eca716979
+  subpackages:
+  - unix
+- name: gopkg.in/fsnotify.v1
+  version: 629574ca2a5df945712d3079857300b5e4da0236
+testImports: []
