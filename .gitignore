@@ -34,3 +34,6 @@ routes/
 
 # Public Components
 public/components/
+
+# Vendor (glide output)
+vendor/
