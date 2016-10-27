@@ -8,3 +8,5 @@ import:
   version: ^0.13.1
   subpackages:
   - revel
+- package: github.com/asaskevich/govalidator
+  version: v5

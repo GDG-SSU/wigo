@@ -1,8 +1,10 @@
-hash: 63e43e891990b2f79c2ba8b528e8b64638fa66a28058c01d60f93269a9d893b9
-updated: 2016-10-25T21:38:21.030186751+09:00
+hash: 6aec254cbf1c8c897e47a09905d2c3faebccf39b530c6c114d853eb7f2e87882
+updated: 2016-10-27T18:50:33.491971271+09:00
 imports:
 - name: github.com/agtorre/gocolorize
   version: f42b554bf7f006936130c9bb4f971afd2d87f671
+- name: github.com/asaskevich/govalidator
+  version: 7b3beb6df3c42abd3509abfc3bcacc0fbfb7c877
 - name: github.com/go-sql-driver/mysql
   version: a732e14c62dde3285440047bba97581bc472ae18
 - name: github.com/jinzhu/gorm
