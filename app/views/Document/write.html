@@ -1,0 +1,13 @@
+{{set . "title" "Write Document"}}
+{{template "header.html" .}}
+
+<div class="container">
+    <h3>Write Document</h3>
+    <form action="/document/write" method="POST">
+        <input type="text" name="title" autofocus="true" placeholder="Title">
+        <textarea name="content"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+{{template "footer.html" .}}
