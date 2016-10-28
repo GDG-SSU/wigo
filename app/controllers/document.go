@@ -39,6 +39,7 @@ func (c Document) Write() revel.Result {
             app.DB.Create(&models.Document{Title: df.Title, Content: df.Content})
         } else {
             // TEMP: kill the application if there is an form-parsing error
+            // TODO: Handle the submit or database error
             log.Fatal(err)
         }
     }
