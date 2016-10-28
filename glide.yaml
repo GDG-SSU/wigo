@@ -8,3 +8,5 @@ import:
   version: ^0.13.1
   subpackages:
   - revel
+- package: github.com/smartystreets/goconvey
+- package: github.com/smartystreets/assertions
