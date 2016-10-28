@@ -1,5 +1,5 @@
-hash: 63e43e891990b2f79c2ba8b528e8b64638fa66a28058c01d60f93269a9d893b9
-updated: 2016-10-25T21:38:21.030186751+09:00
+hash: 886d7730f26fdeecd22720399d236dbd91a8050a01efd223437be88fcd31d198
+updated: 2016-10-28T20:05:20.323517459+09:00
 imports:
 - name: github.com/agtorre/gocolorize
   version: f42b554bf7f006936130c9bb4f971afd2d87f671
@@ -37,6 +37,17 @@ imports:
   - testing
 - name: github.com/robfig/pathtree
   version: 41257a1839e945fce74afd070e02bab2ea2c776a
+- name: github.com/smartystreets/assertions
+  version: 2063fd1cc7c975db70502811a34b06ad034ccdf2
+  subpackages:
+  - internal/go-render/render
+  - internal/oglematchers
+- name: github.com/smartystreets/goconvey
+  version: 7befa7fd6e2e8ca28d2b94f2d39111929904b08d
+  subpackages:
+  - convey
+  - convey/gotest
+  - convey/reporting
 - name: golang.org/x/net
   version: daba796358cd2742b75aae05761f1b898c9f6a5c
   subpackages:
@@ -47,4 +58,10 @@ imports:
   - unix
 - name: gopkg.in/fsnotify.v1
   version: 629574ca2a5df945712d3079857300b5e4da0236
-testImports: []
+testImports:
+- name: github.com/gopherjs/gopherjs
+  version: c79d0a5dbbdaf21092548246e69886a08f5a8e31
+  subpackages:
+  - js
+- name: github.com/jtolds/gls
+  version: 8ddce2a84170772b95dd5d576c48d517b22cac63
