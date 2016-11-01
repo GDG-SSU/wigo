@@ -27,15 +27,20 @@ func (c Document) Search() revel.Result {
         if err != nil {
             // TODO: present another page
             log.Fatal(err)
-            return c.RenderHtml("Fail")
+            return c.RenderText("Fail to DB Query")
         }
 
         var document models.Document
+
         app.DB.First(&document, "Title = ?", searchDocumentForm.Title)
+        // Check existing document
         if document.ID == 0 {
-            return c.RenderHtml("Row not Found")
+            return c.RenderText("Document is not Found")
         }
-        return c.RenderHtml("Success")
+        c.RenderArgs["docTitle"] = document.Title
+        c.RenderArgs["content"] = document.Content
+        c.RenderArgs["createdAt"] = document.CreatedAt
+        return c.RenderTemplate("Document/document.html")
     }
-    return c.RenderHtml("Post is not supported")
+    return c.RenderText("Post is not supported")
 }
