@@ -15,6 +15,11 @@
     <div class="span6">
       {{template "flash.html" .}}
     </div>
+
+    <form action="/document/search" method="GET">
+      <input type="text" name="title" autofocus="true" placeholder="Title">
+      <button type="submit">Submit</button>
+    </form>
   </div>
 </div>
 
