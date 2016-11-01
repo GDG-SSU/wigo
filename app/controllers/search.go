@@ -6,6 +6,7 @@ import (
     "github.com/GDG-SSU/wigo/app/models"
     "github.com/GDG-SSU/wigo/app"
     "log"
+    "wigo/app/routes"
 )
 
 type SearchDocumentForm struct {
@@ -25,7 +26,6 @@ func (c Document) Search() revel.Result {
     if c.Request.Method == "GET" {
         searchDocumentForm, err := parseSearchDocumentForm(c.Params)
         if err != nil {
-            // TODO: present another page
             log.Fatal(err)
             return c.RenderText("Fail to DB Query")
         }
@@ -35,7 +35,7 @@ func (c Document) Search() revel.Result {
         app.DB.First(&document, "Title = ?", searchDocumentForm.Title)
         // Check existing document
         if document.ID == 0 {
-            return c.RenderText("Document is not Found")
+            return c.Redirect(routes.Document.Write())
         }
         c.RenderArgs["docTitle"] = document.Title
         c.RenderArgs["content"] = document.Content
