@@ -5,7 +5,10 @@
     <h3>검색 결과</h3>
     {{ range $document := .documents }}
         <div class="item">
-            {{ $document.Title }}
+            <form method="get" action="/document/">
+                <input type="hidden" name="document" value="{{ $document.ID }}">
+                <input type="submit" value="{{ $document.Title }}">
+            </form>
         </div>
     {{ end }}
 </div>
