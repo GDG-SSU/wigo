@@ -10,10 +10,10 @@
         {{ end }}
 
         <div class="pager">
-            {{ $title := .searchTitle }}
+            {{ $search_word := .searchWord }}
             {{ $page := .page }}
             {{ range $i := .pages }}
-            <a href="/document/search?title={{ $title }}&page={{ $i }}">{{ $i }}</a>
+            <a href="/document/search?search_word={{ $search_word }}&page={{ $i }}">{{ $i }}</a>
             {{ end }}
         </div>
     {{ else }}

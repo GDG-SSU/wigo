@@ -9,12 +9,12 @@ import (
 )
 
 type SearchDocumentForm struct {
-    Title string `valid:"required"`
+    SearchWord string `valid:"required"`
 }
 
 func parseSearchDocumentForm(p *revel.Params) (SearchDocumentForm, error) {
     doc := &SearchDocumentForm{}
-    p.Bind(&(doc.Title), "title")
+    p.Bind(&(doc.SearchWord), "search_word")
 
     _, err := govalidator.ValidateStruct(doc)
     return *doc, err
@@ -37,8 +37,8 @@ func (c Document) Search(page int) revel.Result {
         maxNumOfDocument := 1
         maxNumOfPage := 5
 
-        app.DB.Limit(maxNumOfDocument).Table("documents").Select("id, title").Where("Title LIKE ? OR Content LIKE ?", "%" + searchDocumentForm.Title + "%", "%" + searchDocumentForm.Title + "%").Count(&count).Offset(maxNumOfDocument * (page - 1)).Find(&documents)
-        c.RenderArgs["searchTitle"] = searchDocumentForm.Title
+        app.DB.Limit(maxNumOfDocument).Table("documents").Select("id, title").Where("Title LIKE ? OR Content LIKE ?", "%" + searchDocumentForm.SearchWord + "%", "%" + searchDocumentForm.SearchWord + "%").Count(&count).Offset(maxNumOfDocument * (page - 1)).Find(&documents)
+        c.RenderArgs["searchWord"] = searchDocumentForm.SearchWord
 
         // Check existing document
         if len(documents) == 0 {
