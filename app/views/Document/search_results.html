@@ -4,13 +4,16 @@
 <div class="container">
     <h3>검색 결과</h3>
     {{ range $document := .documents }}
-        <div class="item">
-            <form method="get" action="/document">
-                <input type="hidden" name="id" value="{{ $document.ID }}">
-                <input type="submit" value="{{ $document.Title }}">
-            </form>
-        </div>
+        <a href="/document?id={{ $document.ID }}">{{ $document.Title }}</a>
     {{ end }}
+
+    <div class="pager">
+        {{ $title := .searchTitle }}
+        {{ $page := .page }}
+        {{ range $i := .pages }}
+            <a href="/document/search?title={{ $title }}&page={{ $i }}">{{ $i }}</a>
+        {{ end }}
+    </div>
 </div>
 
 {{ template "footer.html" . }}
