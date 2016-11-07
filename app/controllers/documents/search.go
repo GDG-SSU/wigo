@@ -22,6 +22,7 @@ func parseSearchDocumentForm(p *revel.Params) (SearchDocumentForm, error) {
 }
 
 
+// Document 검색
 func (c Document) Search() revel.Result {
     // When submit button is clicked
     if c.Request.Method == "GET" {
@@ -32,7 +33,6 @@ func (c Document) Search() revel.Result {
         }
 
         var documents []models.Document
-
         app.DB.Table("documents").Select("id, title").Where("Title LIKE ? OR Content LIKE ?", "%" + searchDocumentForm.Title + "%", "%" + searchDocumentForm.Title + "%").Find(&documents)
 
         // Check existing document

@@ -2,10 +2,10 @@
 {{ template "header.html" .}}
 
 <div class="container">
-    <h3>{{ .docTitle }}</h3>
-    {{ .createdAt }}
+    <h3>{{ .document.Title }}</h3>
+    {{ .document.CreatedAt }}
     <div class="content">
-        {{ .content }}
+        {{ .document.Content }}
     </div>
 </div>
 
