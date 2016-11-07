@@ -1,0 +1,13 @@
+{{ set . "title" "List" }}
+{{ template "header.html" . }}
+
+<div class="container">
+    <h3>검색 결과</h3>
+    {{ range $document := .documents }}
+        <div class="item">
+            {{ $document.Title }}
+        </div>
+    {{ end }}
+</div>
+
+{{ template "footer.html" . }}

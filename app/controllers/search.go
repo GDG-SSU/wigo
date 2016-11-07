@@ -6,7 +6,7 @@ import (
     "github.com/GDG-SSU/wigo/app/models"
     "github.com/GDG-SSU/wigo/app"
     "log"
-    "wigo/app/routes"
+    "github.com/GDG-SSU/wigo/app/routes"
 )
 
 type SearchDocumentForm struct {
@@ -30,17 +30,16 @@ func (c Document) Search() revel.Result {
             return c.RenderText("Fail to DB Query")
         }
 
-        var document models.Document
+        var documents []models.Document
 
-        app.DB.First(&document, "Title = ?", searchDocumentForm.Title)
+        app.DB.Where("Title LIKE ? OR Content LIKE ?", searchDocumentForm.Title, searchDocumentForm.Title).Find(&documents)
+
         // Check existing document
-        if document.ID == 0 {
+        if len(documents) == 0 {
             return c.Redirect(routes.Document.Write())
         }
-        c.RenderArgs["docTitle"] = document.Title
-        c.RenderArgs["content"] = document.Content
-        c.RenderArgs["createdAt"] = document.CreatedAt
-        return c.RenderTemplate("Document/document.html")
+        c.RenderArgs["documents"] = documents
+        return c.RenderTemplate("Document/search_results.html")
     }
     return c.RenderText("Post is not supported")
 }
