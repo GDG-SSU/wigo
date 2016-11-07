@@ -34,7 +34,7 @@ func (c Document) Search(page int) revel.Result {
         var documents []models.Document
         var pages []int
         count := 0
-        maxNumOfDocument := 1
+        maxNumOfDocument := 10
         maxNumOfPage := 5
 
         app.DB.Limit(maxNumOfDocument).Table("documents").Select("id, title").Where("Title LIKE ? OR Content LIKE ?", "%" + searchDocumentForm.SearchWord + "%", "%" + searchDocumentForm.SearchWord + "%").Count(&count).Offset(maxNumOfDocument * (page - 1)).Find(&documents)
@@ -46,8 +46,12 @@ func (c Document) Search(page int) revel.Result {
             return c.RenderTemplate("Document/search_results.html")
         }
 
+        var mod = 0
+        if count % maxNumOfDocument > 0 {
+            mod = 1
+        }
         // Init page list
-        for i := page - (maxNumOfPage >> 1); !(len(pages) >= maxNumOfPage) && i <= count / maxNumOfDocument; i++ {
+        for i := page - (maxNumOfPage >> 1); !(len(pages) >= maxNumOfPage) && i <= count / maxNumOfDocument + mod; i++ {
             if i < 1 {
                 continue
             }

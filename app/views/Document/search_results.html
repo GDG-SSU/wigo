@@ -6,7 +6,11 @@
     {{ if .isDocumentExist }}
         <!--문서가 있을 경우-->
         {{ range $document := .documents }}
-        <a href="/document?id={{ $document.ID }}">{{ $document.Title }}</a>
+            <ul>
+                <li>
+                    <a href="/document?id={{ $document.ID }}">{{ $document.Title }}</a>
+                </li>
+            </ul>
         {{ end }}
 
         <div class="pager">
