@@ -3,17 +3,24 @@
 
 <div class="container">
     <h3>검색 결과</h3>
-    {{ range $document := .documents }}
+    {{ if .isDocumentExist }}
+        <!--문서가 있을 경우-->
+        {{ range $document := .documents }}
         <a href="/document?id={{ $document.ID }}">{{ $document.Title }}</a>
-    {{ end }}
-
-    <div class="pager">
-        {{ $title := .searchTitle }}
-        {{ $page := .page }}
-        {{ range $i := .pages }}
-            <a href="/document/search?title={{ $title }}&page={{ $i }}">{{ $i }}</a>
         {{ end }}
-    </div>
+
+        <div class="pager">
+            {{ $title := .searchTitle }}
+            {{ $page := .page }}
+            {{ range $i := .pages }}
+            <a href="/document/search?title={{ $title }}&page={{ $i }}">{{ $i }}</a>
+            {{ end }}
+        </div>
+    {{ else }}
+        <!--문서가 없는 경우-->
+        작성된 문서가 없습니다.
+        <a href="/document/write">작성하기</a>
+    {{ end }}
 </div>
 
 {{ template "footer.html" . }}
