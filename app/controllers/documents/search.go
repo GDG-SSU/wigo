@@ -38,7 +38,7 @@ func (c Document) Search(page int) revel.Result {
         maxNumOfPage := 5
 
         app.DB.Limit(maxNumOfDocument).Table("documents").Select("id, title").Where("Title LIKE ? OR Content LIKE ?", "%" + searchDocumentForm.SearchWord + "%", "%" + searchDocumentForm.SearchWord + "%").Count(&count).Offset(maxNumOfDocument * (page - 1)).Find(&documents)
-        c.RenderArgs["searchWord"] = searchDocumentForm.SearchWord
+        c.RenderArgs["searchWord"] = searchDocumentForm.SearchWord      // 검색어
 
         // Check existing document
         if len(documents) == 0 {
@@ -50,7 +50,7 @@ func (c Document) Search(page int) revel.Result {
         if count % maxNumOfDocument > 0 {
             mod = 1
         }
-        // Init page list
+        // Init page number list
         for i := page - (maxNumOfPage >> 1); !(len(pages) >= maxNumOfPage) && i <= count / maxNumOfDocument + mod; i++ {
             if i < 1 {
                 continue
@@ -58,10 +58,10 @@ func (c Document) Search(page int) revel.Result {
             pages = append(pages, i)
         }
 
-        c.RenderArgs["isDocumentExist"] = true
-        c.RenderArgs["documents"] = documents
-        c.RenderArgs["page"] = page
-        c.RenderArgs["pages"] = pages
+        c.RenderArgs["isDocumentExist"] = true      // document 가 존재하는지
+        c.RenderArgs["documents"] = documents       // 검색된 document 리스트
+        c.RenderArgs["page"] = page                 // 현재 페이지 number        ex) 4
+        c.RenderArgs["pages"] = pages               // 표시될 페이지 numbers      ex) 2, 3, 4, 5, 6
         return c.RenderTemplate("Document/search_results.html")
     }
     return c.RenderText("Post is not supported")
