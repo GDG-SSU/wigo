@@ -1,0 +1,13 @@
+{{ set . "title" "Document" }}
+{{ template "header.html" .}}
+
+<div class="container">
+    <h3>{{ .document.Title }}</h3>
+    {{ .document.CreatedAt }}
+    <div class="content">
+        {{ .document.Content }}
+    </div>
+</div>
+
+
+{{ template "footer.html" .}}

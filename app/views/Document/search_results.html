@@ -1,0 +1,30 @@
+{{ set . "title" "List" }}
+{{ template "header.html" . }}
+
+<div class="container">
+    <h3>'{{ .searchWord }}'의 검색 결과</h3>
+    {{ if .isDocumentExist }}
+        <!--문서가 있을 경우-->
+        {{ range $document := .documents }}
+            <ul>
+                <li>
+                    <a href="/document?id={{ $document.ID }}">{{ $document.Title }}</a>
+                </li>
+            </ul>
+        {{ end }}
+
+        <div class="pager">
+            {{ $search_word := .searchWord }}
+            {{ $page := .page }}
+            {{ range $i := .pages }}
+            <a href="/document/search?search_word={{ $search_word }}&page={{ $i }}">{{ $i }}</a>
+            {{ end }}
+        </div>
+    {{ else }}
+        <!--문서가 없는 경우-->
+        작성된 문서가 없습니다.
+        <a href="/document/write">작성하기</a>
+    {{ end }}
+</div>
+
+{{ template "footer.html" . }}

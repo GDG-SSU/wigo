@@ -9,20 +9,16 @@ import (
     "github.com/asaskevich/govalidator"
 )
 
-type Document struct {
-    *revel.Controller
-}
-
 /**
  * DocumentForm - A struct representing POST form payload
  */
-type DocumentForm struct {
+type WriteForm struct {
     Title   string  `valid:"required"`
     Content string  `valid:"required"`
 }
 
-func parseForm(p *revel.Params) (DocumentForm, error) {
-    doc := &DocumentForm{}
+func parseForm(p *revel.Params) (WriteForm, error) {
+    doc := &WriteForm{}
     p.Bind(&(doc.Title), "title")
     p.Bind(&(doc.Content), "content")
 
