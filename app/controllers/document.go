@@ -9,6 +9,10 @@ import (
     "github.com/asaskevich/govalidator"
 )
 
+type Document struct {
+    *revel.Controller
+}
+
 /**
  * DocumentForm - A struct representing POST form payload
  */
@@ -24,6 +28,15 @@ func parseForm(p *revel.Params) (WriteForm, error) {
 
     _, err := govalidator.ValidateStruct(doc)
     return *doc, err
+}
+
+// Document 보기
+func (c Document) View(docId int) revel.Result {
+    document := models.Document{}
+    app.DB.Table("documents").Where("id = ?", docId).Find(&document)
+    // TODO: document not found. 404
+    c.RenderArgs["document"] = document
+    return c.RenderTemplate("Document/document.html")
 }
 
 func (c Document) Write() revel.Result {

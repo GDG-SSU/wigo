@@ -1,12 +1,17 @@
 package controllers
 
 import (
-    "github.com/revel/revel"
     "log"
+
+    "github.com/revel/revel"
+    "github.com/GDG-SSU/wigo/app"
     "github.com/GDG-SSU/wigo/app/models"
     "github.com/asaskevich/govalidator"
-    "github.com/GDG-SSU/wigo/app"
 )
+
+type Search struct {
+    *revel.Controller
+}
 
 type SearchDocumentForm struct {
     SearchWord string `valid:"required"`
@@ -22,7 +27,7 @@ func parseSearchDocumentForm(p *revel.Params) (SearchDocumentForm, error) {
 
 
 // Document 검색
-func (c Document) Search(page int) revel.Result {
+func (c Search) Query(page int) revel.Result {
     // When submit button is clicked
     if c.Request.Method == "GET" {
         searchDocumentForm, err := parseSearchDocumentForm(c.Params)

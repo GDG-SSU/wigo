@@ -8,7 +8,7 @@
         {{ range $document := .documents }}
             <ul>
                 <li>
-                    <a href="/document?id={{ $document.ID }}">{{ $document.Title }}</a>
+                    <a href="/document/view/{{ $document.ID }}">{{ $document.Title }}</a>
                 </li>
             </ul>
         {{ end }}
@@ -17,7 +17,7 @@
             {{ $search_word := .searchWord }}
             {{ $page := .page }}
             {{ range $i := .pages }}
-            <a href="/document/search?search_word={{ $search_word }}&page={{ $i }}">{{ $i }}</a>
+            <a href="/search?search_word={{ $search_word }}&page={{ $i }}">{{ $i }}</a>
             {{ end }}
         </div>
     {{ else }}
