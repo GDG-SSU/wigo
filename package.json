@@ -1,0 +1,35 @@
+{
+  "name": "wigo",
+  "version": "1.0.0",
+  "description": "Wiki engine written in Go",
+  "main": "app/init.go",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GDG-SSU/wigo.git"
+  },
+  "keywords": [
+    "Wiki",
+    "Go"
+  ],
+  "author": "GDG SSU",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GDG-SSU/wigo/issues"
+  },
+  "homepage": "https://github.com/GDG-SSU/wigo#readme",
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "css-loader": "^0.26.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.3"
+  },
+  "dependencies": {
+    "skeleton-css": "^2.0.4"
+  }
+}
